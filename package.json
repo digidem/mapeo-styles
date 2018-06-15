@@ -1,0 +1,19 @@
+{
+  "name": "mapeo-styles",
+  "version": "1.0.0",
+  "description": " Default styles & tiles for mapeo backgrounds ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digidem/mapeo-styles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digidem/mapeo-styles/issues"
+  },
+  "homepage": "https://github.com/digidem/mapeo-styles#readme"
+}
