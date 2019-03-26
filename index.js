@@ -1,13 +1,22 @@
 var fs = require('fs')
 var ncp = require('ncp')
 var path = require('path')
+var mkdirp = require('mkdirp')
 
 module.exports = {}
 
 module.exports.unpack = function (root, cb) {
-  ncp(path.join(__dirname, 'presets'), path.join(root, 'presets'), function (err) {
+  var presetRoot = path.join(root, 'presets')
+  var styleRoot = path.join(root, 'styles')
+  mkdirp(presetRoot, function (err) {
     if (err) return cb(err)
-    ncp(path.join(__dirname, 'styles'), path.join(root, 'styles'), cb)
+    mkdirp(styleRoot, function (err) {
+      if (err) return cb(err)
+      ncp(path.join(__dirname, 'presets'), presetRoot, function (err) {
+        if (err) return cb(err)
+        ncp(path.join(__dirname, 'styles'), styleRoot, cb)
+      })
+    })
   })
 }
 
