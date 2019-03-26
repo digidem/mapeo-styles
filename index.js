@@ -1,13 +1,22 @@
 var fs = require('fs')
-var ncp = require('ncp')
+var ncp = require('recursive-copy')
 var path = require('path')
+var mkdirp = require('mkdirp')
 
 module.exports = {}
 
 module.exports.unpack = function (root, cb) {
-  ncp(path.join(__dirname, 'presets'), path.join(root, 'presets'), function (err) {
+  var stylesRoot = path.join(root, 'styles')
+  var presetRoot = path.join(root, 'presets')
+  mkdirp(presetRoot, function (err) {
     if (err) return cb(err)
-    ncp(path.join(__dirname, 'styles'), path.join(root, 'styles'), cb)
+    mkdirp(stylesRoot, function (err) {
+      if (err) return cb(err)
+      ncp(path.join(__dirname, 'presets'), presetRoot, { clobber: true }, function (err) {
+        if (err) return cb(err)
+        ncp(path.join(__dirname, 'styles'), stylesRoot, { clobber: true }, cb)
+      })
+    })
   })
 }
 

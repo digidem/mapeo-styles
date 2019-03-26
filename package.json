@@ -19,7 +19,8 @@
   "homepage": "https://github.com/digidem/mapeo-styles#readme",
   "dependencies": {
     "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "recursive-copy": "^2.0.10"
   },
   "devDependencies": {
     "standard": "^11.0.1",
