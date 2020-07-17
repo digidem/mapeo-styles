@@ -21,3 +21,29 @@ test('fresh unpack', function (t) {
     t.end()
   })
 })
+
+test('versioned unpack (only 1 copy occurs)', function (t) {
+  var dir = mktmp()
+  styles.unpackIfNew(dir, function (err, didWrite) {
+    t.error(err)
+    t.ok(didWrite, 'new data written')
+    t.equals(fs.readdirSync(dir).length, 3, '3 files in output dir')
+    t.ok(fs.existsSync(path.join(dir, 'styles')), 'styles exists')
+    t.ok(fs.existsSync(path.join(dir, 'presets')), 'presets exists')
+    t.ok(fs.existsSync(path.join(dir, 'version')), 'version file exists')
+    styles.unpackIfNew(dir, function (err, didWrite) {
+      t.error(err)
+      t.notOk(didWrite, 'new data NOT written')
+
+      // HACK: fudge the package version in memory
+      require('../package.json').version = '10000.0.0'
+
+      styles.unpackIfNew(dir, function (err, didWrite) {
+        t.error(err)
+        t.ok(didWrite, 'new data written')
+        t.equals(fs.readFileSync(path.join(dir, 'version'), 'utf8'), '10000.0.0')
+        t.end()
+      })
+    })
+  })
+})
