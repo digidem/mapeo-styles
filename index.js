@@ -12,7 +12,7 @@ module.exports.unpack = function (root, cb) {
     if (err) return cb(err)
     mkdirp(styleRoot, function (err) {
       if (err) return cb(err)
-      ncp(path.join(__dirname, 'presets'), presetRoot, function (err) {
+      ncp(path.join(__dirname, 'node_modules', 'mapeo-default-settings', 'build'), presetRoot, function (err) {
         if (err) return cb(err)
         ncp(path.join(__dirname, 'styles'), styleRoot, cb)
       })

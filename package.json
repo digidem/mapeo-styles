@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/digidem/mapeo-styles#readme",
   "dependencies": {
+    "mapeo-default-settings": "^3.0.0",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0"
   },
