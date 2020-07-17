@@ -1,5 +1,4 @@
-var fs = require('fs')
-var ncp = require('ncp')
+var fs = require('fs-extra')
 var path = require('path')
 var mkdirp = require('mkdirp')
 
@@ -12,9 +11,9 @@ module.exports.unpack = function (root, cb) {
     if (err) return cb(err)
     mkdirp(styleRoot, function (err) {
       if (err) return cb(err)
-      ncp(path.join(__dirname, 'node_modules', 'mapeo-default-settings', 'build'), presetRoot, function (err) {
+      fs.copy(path.join(__dirname, 'node_modules', 'mapeo-default-settings', 'dist'), path.join(presetRoot, 'fallback'), function (err) {
         if (err) return cb(err)
-        ncp(path.join(__dirname, 'styles'), styleRoot, cb)
+        fs.copy(path.join(__dirname, 'styles'), styleRoot, cb)
       })
     })
   })
