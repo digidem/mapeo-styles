@@ -4,11 +4,13 @@ var mkdirp = require('mkdirp')
 
 module.exports = {}
 
+module.exports.FALLBACK_DIR_NAME = 'MAPEO_PRESETS_FALLBACK_DIR'
+
 module.exports.unpack = function (root, cb) {
   // We need this because mapeo-default-settings does not have
   // a subdirectory, but styles in this repo does have a subdirectory for
   // each default style.
-  var presetRoot = path.join(root, 'presets', 'fallback')
+  var presetRoot = path.join(root, 'presets', module.exports.FALLBACK_DIR_NAME)
   var styleRoot = path.join(root, 'styles')
   mkdirp(presetRoot, function (err) {
     if (err) return cb(err)
