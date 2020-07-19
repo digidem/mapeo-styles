@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/digidem/mapeo-styles#readme",
   "dependencies": {
+    "fs-extra": "^9.0.1",
     "mapeo-default-settings": "^3.0.0",
-    "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0"
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
     "standard": "^11.0.1",
