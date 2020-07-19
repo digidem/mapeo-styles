@@ -36,7 +36,7 @@ test('versioned unpack (only 1 copy occurs)', function (t) {
       t.notOk(didWrite, 'new data NOT written')
 
       // HACK: fudge the package version in memory
-      require('../package.json').version = '10000.0.0'
+      require('mapeo-default-settings/package.json').version = '10000.0.0'
 
       styles.unpackIfNew(dir, function (err, didWrite) {
         t.error(err)
