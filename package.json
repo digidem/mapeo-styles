@@ -1,6 +1,6 @@
 {
   "name": "mapeo-styles",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": " Default styles & tiles for mapeo backgrounds ",
   "main": "index.js",
   "scripts": {
