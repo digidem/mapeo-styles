@@ -16,7 +16,8 @@ module.exports.unpack = function (root, cb) {
     if (err) return cb(err)
     mkdirp(styleRoot, function (err) {
       if (err) return cb(err)
-      fs.copy(path.join(__dirname, 'node_modules', 'mapeo-default-settings', 'dist'), presetRoot, function (err) {
+      var distPath = path.join(require.resolve('mapeo-default-settings'), '..', '..', 'dist')
+      fs.copy(distPath, presetRoot, function (err) {
         if (err) return cb(err)
         fs.copy(path.join(__dirname, 'styles'), styleRoot, cb)
       })
